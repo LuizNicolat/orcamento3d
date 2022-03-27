@@ -9,21 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name="CLIENT")
-@EqualsAndHashCode(callSuper = false)
-public class Client extends Person implements Serializable{
+public class Client implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private int secondPhone;
+	private int clientId;
+	private String firstName;
+	private String lastName;
+	private String firstPhone;
+	private String secondPhone;
+	private String cpfCgc;
+	private String address;
+	private int addressNumber;
+	private String zipCode;
+	private String city;
+	private String state;
+	private String addressComplement;
 	private String firstEmail;
 	private String secondEmail;
 

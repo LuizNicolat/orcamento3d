@@ -20,8 +20,8 @@ public class Expenses implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private double kilowatHour;
+	private int expensesId;
+	private double kilowattHour;
 	private int profitPercentage;
 	private double extraExpenses;
 }

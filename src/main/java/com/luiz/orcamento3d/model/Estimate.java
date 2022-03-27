@@ -1,31 +1,29 @@
 package com.luiz.orcamento3d.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name="PRINTER")
-public class Printer implements Serializable{
+public class Estimate implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int printerId;
-	private String printerBrand;
-	private String printerModel;
-	private double printerPrice;
-	private int printerPotency;
-	
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int estimateId;
+
+	@OneToMany
+	private List<Part> listParts;
 }

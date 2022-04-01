@@ -22,7 +22,7 @@ public class Filament implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int filamentId;
 
 	@ManyToOne
@@ -39,5 +39,6 @@ public class Filament implements Serializable {
 		this.filamentPrice = filamentPrice;
 		this.lastBuyDate = lastBuyDate;
 	}
+
 
 }

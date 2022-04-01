@@ -9,6 +9,13 @@ public class Utils {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return date.format(fmt);
 	}
+	
+	public static LocalDate convertStringToLocalDate(String date) {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("d/MM/yyyy");
+
+		LocalDate localDate = LocalDate.parse(date, fmt);
+		return localDate;
+	}
 
 	public static String convertMinutesToHoursAndMinutes(int minutes_) {
 		// Conversão de minutos para horas de impressão

@@ -20,7 +20,7 @@ public class Printer implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int printerId;
 	private String printerBrand;
 	private String printerModel;

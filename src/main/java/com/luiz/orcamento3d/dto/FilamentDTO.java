@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FilamentDTO {
+	private int filamentId;
 	private int SupplierId;
 	private String filamentType;
 	private double filamentPrice;

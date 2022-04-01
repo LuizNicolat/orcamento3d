@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,11 +49,25 @@ public class FilamentController {
 
 	@PostMapping
 	public ResponseEntity<FilamentDTO> create(@RequestBody FilamentDTO filament_) {
-		Filament fila = filaService.create();
+		Filament fila = filaService.create(filament_);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(fila.getFilamentId())
 				.toUri();
 
 		return ResponseEntity.created(uri).build();
 	}
 
+	@PutMapping
+	public ResponseEntity<FilamentDTO> update(@RequestBody FilamentDTO filament_) {
+		Filament fila = filaService.update(filament_);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+fila.getFilamentId()).buildAndExpand(fila.getFilamentId())
+				.toUri();
+
+		return ResponseEntity.created(uri).build();
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		filaService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

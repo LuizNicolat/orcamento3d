@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.luiz.orcamento3d.model.Client;
 import com.luiz.orcamento3d.repository.ClientRepository;
-import com.luiz.orcamento3d.repository.SupplierRepository;
 
 @Service
 public class ClientService {
@@ -15,11 +14,8 @@ public class ClientService {
 	@Autowired
 	ClientRepository cliRepo;
 
-	@Autowired
-	SupplierRepository supRepo;
-
 	public Client findById(int id) {
-		return cliRepo.getById(id);
+		return cliRepo.findById(id).get();
 	}
 
 	public List<Client> findAll() {
@@ -41,6 +37,32 @@ public class ClientService {
 				cli_.getAddressComplement(), 
 				cli_.getFirstEmail(), 
 				cli_.getSecondEmail()));
+	}
+	
+	public Client update(Client client_) {
+		//Filament fila_ = filamentFromDTO(fila, supplier_);
+		Client cliOld = cliRepo.getById(client_.getClientId());
+		
+		if (cliOld != null) {
+			cliOld.setFirstName(client_.getFirstName()); 
+			cliOld.setLastName(client_.getLastName());
+			cliOld.setFirstPhone(client_.getFirstPhone());
+			cliOld.setSecondPhone(client_.getSecondPhone()); 
+			cliOld.setCpfCgc(client_.getCpfCgc());
+			cliOld.setAddress(client_.getAddress()); 
+			cliOld.setAddressNumber(client_.getAddressNumber()); 
+			cliOld.setZipCode(client_.getZipCode());
+			cliOld.setCity(client_.getCity());
+			cliOld.setState(client_.getState()); 
+			cliOld.setAddressComplement(client_.getAddressComplement()); 
+			cliOld.setFirstEmail(client_.getFirstEmail());
+			cliOld.setSecondEmail(client_.getSecondEmail());		
+
+			return cliRepo.save(cliOld);
+		} else {
+			return null;
+		}
+		
 	}
 
 	public void delete(Integer id) {

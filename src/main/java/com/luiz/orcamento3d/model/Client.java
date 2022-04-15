@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +40,9 @@ public class Client implements Serializable {
 	private String addressComplement;
 	private String firstEmail;
 	private String secondEmail;
+	
+	@OneToOne(mappedBy = "clientId")
+    private Estimate estimate;
 
 	public Client(String firstName, String lastName, String firstPhone, String secondPhone, String cpfCgc,
 			String address, int addressNumber, String zipCode, String city, String state, String addressComplement,

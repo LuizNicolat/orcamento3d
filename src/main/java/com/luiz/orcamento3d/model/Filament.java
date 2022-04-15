@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,4 +44,6 @@ public class Filament implements Serializable {
 	}
 
 
+	@OneToOne(mappedBy = "filamentId")
+    private Estimate estimate;
 }
